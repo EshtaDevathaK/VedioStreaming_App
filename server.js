@@ -1,14 +1,13 @@
 import express from "express";
 import path from "path";
 import { fileURLToPath } from "url";
-import { dirname } from "path";
-
-// Get the current file path
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+// Define __dirname manually
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Serve static files from the Vite build
 app.use(express.static(path.join(__dirname, "dist")));
